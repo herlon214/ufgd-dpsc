@@ -9,7 +9,7 @@
         <div class="container">
             <div class="row">
                 <div class="col header text-center" style="height: 170px;padding-top: 30px">
-                    <h1 class="display-3">Classificados Fácil</h1>
+                    <h1 class="display-3"><a href="/">Classificados Fácil</a></h1>
                     <p class="display-6">Gerenciamento de classificados de maneira simples.</p>
                 </div>
             </div>
@@ -48,8 +48,9 @@
                                 </li>
 
                                 </ul>
-                                <form class="form-inline my-3 my-lg-0">
-                                    <input class="form-control mr-sm-2" type="text" placeholder="Digite sua pesquisa aqui" aria-label="Pesquisar">
+                                <form class="form-inline my-3 my-lg-0" method="POST" action="{{ url('search') }}">
+                                    {{ csrf_field() }}
+                                    <input name="pesquisa" class="form-control mr-sm-2" type="text" placeholder="Digite sua pesquisa aqui" aria-label="Pesquisar">
                                     <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Pesquisar</button>
                                 </form>
                             </div>

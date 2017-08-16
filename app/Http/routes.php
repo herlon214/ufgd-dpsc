@@ -12,3 +12,6 @@
 */
 
 Route::get('/', 'IndexController@index');
+Route::post('/search', 'IndexController@search');
+
+Route::resource('/classificados', 'ClassifiedsController');

@@ -4,6 +4,7 @@
 
 <!-- Classificados -->
 <div class="row">
+  <h2>Classificados da categoria <u>{{ $category->name }}</u></h2>
   @foreach($classifieds as $item)
   <div class="col-3" style="padding-top: 25px">
     <div class="card">
