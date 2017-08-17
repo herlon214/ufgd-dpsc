@@ -8,9 +8,30 @@
     <body>
         <div class="container">
             <div class="row">
-                <div class="col header text-center" style="height: 170px;padding-top: 30px">
+                <div class="col header" style="height: 170px;padding-top: 30px">
                     <h1 class="display-3"><a href="/">Classificados Fácil</a></h1>
                     <p class="display-6">Gerenciamento de classificados de maneira simples.</p>
+                </div>
+                <div class="col text-center">
+                    <br><br>
+                    @if(\Auth::user())
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ \Auth::user()->name }}
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Editar informações</a>
+                                <a class="dropdown-item" href="#">Acompanhar classificados</a>
+                                <a class="dropdown-item" href="#">Postar classificado</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ url('logout') }}">Sair</a>
+                            </div>
+                        </div>
+                    @else
+                        <a href="{{ url('login') }}" class="btn btn-primary">Logar no sistema</a> 
+                    @endif
+                    
+                    
                 </div>
             </div>
         </div>
@@ -52,6 +73,7 @@
             <div class="row">
                 <div class="col">
                     <br>
+                    @include('widgets.callout')
                     @yield('content')
                     <br><br><br><br>
                 </div>
@@ -66,7 +88,7 @@
             </div>
         </div>
         <script type="application/javascript" src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
-        <script type="application/javascript" src="{{ asset('js/popper.min.js') }}"></script>
+        <script type="application/javascript" src="{{ asset('bower_components/popper.js/dist/umd/popper.min.js') }}"></script>
         <script type="application/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
     </body>
 </html>
