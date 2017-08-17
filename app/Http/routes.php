@@ -13,5 +13,6 @@
 
 Route::get('/', 'IndexController@index');
 Route::post('/search', 'IndexController@search');
+Route::get('/category/{id}', 'IndexController@category');
 
 Route::resource('/classificados', 'ClassifiedsController');

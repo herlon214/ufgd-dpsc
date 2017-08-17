@@ -4,14 +4,14 @@
 
 <!-- Classificados -->
 <div class="col-12">
-  <h2>Classificados da categoria <u>{{ $category->name }}</u></h2>
+  <h2>Pesquisando por <u>{{ $search }}</u></h2>
 
   @foreach($classifieds as $item)
     @include('widgets.classified', ['item' => $item])
   @endforeach
 
   @if(count($classifieds) == 0)
-  <div class="text-center">Essa categoria ainda não possui classificados.</div>
+  <div class="text-center">Não encontramos nenhum classificado com seu critério de pesquisa.</div>
   @endif
 </div>  
 

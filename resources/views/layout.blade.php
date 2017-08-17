@@ -28,24 +28,12 @@
                                 <li class="nav-item active">
                                     <a class="nav-link" href="#">Início <span class="sr-only">(current)</span></a>
                                 </li>
+                                @foreach(\App\Models\ClassifiedCategory::getAll() as $category)
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Imóveis</a>
+                                    <a class="nav-link" href="{{ url('category/'.$category->id) }}">{{ $category->name }}</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Veículos</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Eletrônicos</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Roupa</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Móveis</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Eletrodomésticos</a>
-                                </li>
+                                @endforeach
+                                
 
                                 </ul>
                                 <form class="form-inline my-3 my-lg-0" method="POST" action="{{ url('search') }}">
@@ -63,11 +51,22 @@
         <div class="container">
             <div class="row">
                 <div class="col">
+                    <br>
                     @yield('content')
+                    <br><br><br><br>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer" style="background: #ece9e9;padding-top: 40px;padding-bottom: 40px;">
+            <div class="container">
+                <div class="col-12 text-center">
+                    <small><strong>Classificados Fácil</strong> &copy; - Todos os direitos reservados - 2017</small>
                 </div>
             </div>
         </div>
         <script type="application/javascript" src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+        <script type="application/javascript" src="{{ asset('js/popper.min.js') }}"></script>
         <script type="application/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
     </body>
 </html>

@@ -16,9 +16,9 @@ class IndexController extends Controller
 
     public function search(Request $request) {
         $field = $request->input('pesquisa');
-        $classifieds = \App\Models\Classified::where('description', 'LIKE', '%'.$field.'%')->orWhere('title', 'LIKE', '%'.$field.'%')->get();
+        $classifieds = \App\Models\Classified::where('title', 'LIKE', '%'.$field.'%')->get();
 
-        return view('home', ['classifieds' => $classifieds]);
+        return view('search', ['classifieds' => $classifieds, 'search' => $field]);
     }
 
     public function category($id) {
