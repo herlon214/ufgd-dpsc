@@ -14,7 +14,7 @@
 Route::get('/', 'IndexController@index');
 Route::post('/search', 'IndexController@search');
 Route::get('/categoria/{id}', 'IndexController@category');
-
+Route::resource('/interesse', 'InterestController');
 Route::group(['prefix' => '/admin'], function() {
   Route::resource('/comentarios', 'Admin\CommentsController');
   Route::resource('/usuarios', 'Admin\UsersController');

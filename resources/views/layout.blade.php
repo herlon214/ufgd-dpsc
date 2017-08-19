@@ -24,6 +24,7 @@
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="{{ url(action('UserController@edit', \Auth::user()->id)) }}">Editar informações</a>
                                 <a class="dropdown-item" href="{{ url(action('ClassifiedsController@index')) }}">Meus classificados</a>
+                                <a class="dropdown-item" href="{{ url(action('InterestController@create')) }}">Cadastrar interesse</a>
                                 @if(\Auth::user()->is_admin)
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ url(action('Admin\CommentsController@index')) }}">Gerenciar comentários</a>
