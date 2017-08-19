@@ -7,8 +7,8 @@ use Kris\LaravelFormBuilder\FormBuilder;
 use App\Forms\Login;
 use App\Http\Requests;
 
-class LoginController extends Controller
-{
+class LoginController extends Controller {
+    
     public function index(FormBuilder $formBuilder, Request $request) {
         $form = $formBuilder->create(Login::class, [
             'method' => 'POST',

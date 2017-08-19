@@ -2,17 +2,19 @@
 <html>
     <head>
         <title>Classificados Fácil</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+
     </head>
     <body>
         <div class="container">
             <div class="row">
-                <div class="col header" style="height: 170px;padding-top: 30px">
-                    <h1 class="display-3"><a href="/">Classificados Fácil</a></h1>
+                <div class="col-md-6 col-xs-12 header text-center" style="height: 170px;padding-top: 30px">
+                    <h1 class="display-4"><a href="/">Classificados Fácil</a></h1>
                     <p class="display-6">Gerenciamento de classificados de maneira simples.</p>
                 </div>
-                <div class="col text-center">
+                <div class="col-md-6 col-xs-12 text-right">
                     <br><br>
                     @if(\Auth::user())
                         <div class="btn-group">
@@ -20,17 +22,25 @@
                                 {{ \Auth::user()->name }}
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Editar informações</a>
-                                <a class="dropdown-item" href="#">Acompanhar classificados</a>
-                                <a class="dropdown-item" href="#">Postar classificado</a>
+                                <a class="dropdown-item" href="{{ url(action('UserController@edit', \Auth::user()->id)) }}">Editar informações</a>
+                                <a class="dropdown-item" href="{{ url(action('ClassifiedsController@index')) }}">Meus classificados</a>
+                                @if(\Auth::user()->is_admin)
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ url(action('Admin\CommentsController@index')) }}">Gerenciar comentários</a>
+                                <a class="dropdown-item" href="{{ url(action('ClassifiedsController@index')) }}">Gerenciar usuários</a>
+                                <a class="dropdown-item" href="{{ url(action('ClassifiedsController@index')) }}">Gerenciar classificados</a>
+                                <a class="dropdown-item" href="{{ url(action('ClassifiedsController@index')) }}">Gerenciar publicidades</a>
+                                @endif
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ url('logout') }}">Sair</a>
                             </div>
                         </div>
                     @else
-                        <a href="{{ url('login') }}" class="btn btn-primary">Logar no sistema</a> 
+                        <a href="{{ url('login') }}" class="btn btn-primary">Acessar minha conta</a> 
+                        <a href="{{ url('signup') }}" class="btn btn-primary">Cadastrar uma nova conta</a> 
+                        
                     @endif
-                    
+                    <br><br>
                     
                 </div>
             </div>
@@ -51,7 +61,7 @@
                                 </li>
                                 @foreach(\App\Models\ClassifiedCategory::getAll() as $category)
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('category/'.$category->id) }}">{{ $category->name }}</a>
+                                    <a class="nav-link" href="{{ url('categoria/'.$category->id) }}">{{ $category->name }}</a>
                                 </li>
                                 @endforeach
                                 
@@ -90,5 +100,10 @@
         <script type="application/javascript" src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
         <script type="application/javascript" src="{{ asset('bower_components/popper.js/dist/umd/popper.min.js') }}"></script>
         <script type="application/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <script type="application/javascript">
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+        </script>
     </body>
 </html>

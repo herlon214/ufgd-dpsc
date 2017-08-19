@@ -1,5 +1,5 @@
 @if($data)
-  <small class="label bg-green">Sim</small>
+  <small class="badge badge-success">Sim</small>
 @else
-  <small class="label bg-red">Não</small>
+  <small class="badge badge-danger">Não</small>
 @endif
