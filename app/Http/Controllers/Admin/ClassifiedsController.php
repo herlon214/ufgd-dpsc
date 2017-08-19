@@ -57,7 +57,7 @@ class ClassifiedsController extends \App\Http\Controllers\Controller {
         $item->category_id = $values['category_id'];
         if ($request->hasFile('photo')) {
           $file = $request->file('photo');
-          $item->photo_url = $file->move('public/images');
+          $item->photo_url = $file->move('classifieds', sha1(time()).'.'.$file->extension());
         }
 
         $item->save();

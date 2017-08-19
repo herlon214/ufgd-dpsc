@@ -27,9 +27,9 @@
                                 @if(\Auth::user()->is_admin)
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ url(action('Admin\CommentsController@index')) }}">Gerenciar comentários</a>
-                                <a class="dropdown-item" href="{{ url(action('ClassifiedsController@index')) }}">Gerenciar usuários</a>
-                                <a class="dropdown-item" href="{{ url(action('ClassifiedsController@index')) }}">Gerenciar classificados</a>
-                                <a class="dropdown-item" href="{{ url(action('ClassifiedsController@index')) }}">Gerenciar publicidades</a>
+                                <a class="dropdown-item" href="{{ url(action('Admin\UsersController@index')) }}">Gerenciar usuários</a>
+                                <a class="dropdown-item" href="{{ url(action('Admin\ClassifiedsController@index')) }}">Gerenciar classificados</a>
+                                <a class="dropdown-item" href="{{ url(action('Admin\AdsController@index')) }}">Gerenciar publicidades</a>
                                 @endif
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ url('logout') }}">Sair</a>
@@ -102,7 +102,8 @@
         <script type="application/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
         <script type="application/javascript">
             $(function () {
-                $('[data-toggle="tooltip"]').tooltip()
+                $('.carousel').carousel();
+                $('[data-toggle="tooltip"]').tooltip();
             })
         </script>
     </body>

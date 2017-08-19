@@ -110,7 +110,7 @@ class ClassifiedsController extends Controller {
       $model->category_id = $values['category_id'];
       if ($request->hasFile('photo')) {
         $file = $request->file('photo');
-        $model->photo_url = $file->move('public/images');
+        $model->photo_url = $file->move('classifieds', sha1(time()).'.'.$file->extension());
       }
 
       return $model;

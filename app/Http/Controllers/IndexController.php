@@ -10,8 +10,9 @@ class IndexController extends Controller
 {
     public function index() {
         $classifieds = \App\Models\Classified::get();
+        $ads = \App\Models\Ads::get();
 
-        return view('home', ['classifieds' => $classifieds]);
+        return view('home', ['classifieds' => $classifieds, 'ads' => $ads]);
     }
 
     public function search(Request $request) {

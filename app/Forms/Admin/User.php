@@ -4,6 +4,8 @@ namespace App\Forms\Admin;
 class User extends \App\Forms\Form {
 
   public function buildForm() {
+    $this->prepare();
+    
     $this->add('name', 'text', [
       'rules' => 'required',
       'label' => 'Nome'
